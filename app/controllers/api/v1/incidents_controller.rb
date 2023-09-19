@@ -20,19 +20,21 @@ class Api::V1::IncidentsController < ApplicationController
   end
 
   def update
-    @incident = Incident.find(params[:id])
+    puts "UPDATE INCIDENT #{params[:id]}"
+    @incident = Incident.find_by(sys_id: params[:id])
     if @incident
-     @incident.update(incident_params)
-     render json: { message: 'Incident successfully update. '}, status:200
+      puts "Incident found. Updating with params: #{incident_params}"
+      @incident.update(incident_params)
+      render json: { message: 'Incident successfully updated. '}, status:200
     else
-     render json: { error: 'Unable to update Incident. '}, status:400
+      render json: { error: 'Unable to update Incident. '}, status:400
     end 
   end
 
   private
-  
+
   def incident_params
-    params.require(:incident).permit(:sys_id, :number)
+    params.require(:incident).permit(:sys_id, :number, :state)
   end
   # route_param :id do
   #   #
