@@ -20,7 +20,7 @@ class Api::V1::IncidentsController < ApplicationController
   end
 
   def update
-    puts "UPDATE INCIDENT #{params[:id]}"
+    puts "UPDATE INCIDENT #{params}"
     @incident = Incident.find_by(sys_id: params[:id])
     if @incident
       puts "Incident found. Updating with params: #{incident_params}"
