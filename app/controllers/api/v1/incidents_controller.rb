@@ -34,28 +34,6 @@ class Api::V1::IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.require(:incident).permit(:sys_id, :number, :state)
+    params.permit(:sys_id, :number, :state)
   end
-  # route_param :id do
-  #   #
-  #   # /incidents/:id
-  #   #
-  #   params do
-  #     requires :id, type: Integer, desc: 'Endpoint ID', documentation: { example: '42' }
-  #   end
-  #   get do
-  #     @incident = Incident.find(params[:id])
-  #     render json: @incident
-  #   end
-
-  #   def update
-  #     @user = User.find(params[:id])
-  #     if @user
-  #      @user.update(user_params)
-  #      render json: { message: 'User successfully update. '}, status:200
-  #     else
-  #      render json: { error: 'Unable to update user. '}, status:400
-  #     end 
-  #    end
-  # end
 end
